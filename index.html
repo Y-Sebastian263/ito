@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>🥠 Fortune Cookie おみくじ</title>
+<style>
+:root{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;color:#65566b}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 10% 10%,#ffe1ee,transparent 40%),radial-gradient(circle at 90% 80%,#d9efff,transparent 45%),#f9f2ff;display:grid;place-items:center;padding:18px}.app{width:min(850px,100%);border:2px solid white;border-radius:28px;background:#ffffffb9;box-shadow:0 20px 55px #c6a3c355;padding:22px;text-align:center}h1{color:#e977ac;margin:0;font-size:clamp(24px,4vw,38px)}.sub{color:#917f96;margin:8px 0 14px}.settings,.actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:15px 0}input,select,button{font:inherit;border-radius:22px;padding:10px 15px}input,select{border:1px solid #ead6e7;background:white;color:#65566b;max-width:100%}button{border:0;cursor:pointer;background:#f38dbb;color:white;font-weight:700;box-shadow:0 6px 16px #dda2c277}button.secondary{background:white;color:#a078a0;border:1px solid #ead6e7}button:disabled{opacity:.55;cursor:wait}.stage{height:325px;position:relative;display:grid;place-items:center;overflow:hidden;border-radius:24px;background:radial-gradient(circle,#fffdf9,#fff7fc 65%,#f0f4ff)}.stage.result{height:390px}.cookie{position:relative;width:260px;height:185px;cursor:pointer;outline-offset:5px;z-index:3}.whole,.half{position:absolute;background:radial-gradient(ellipse at 38% 25%,#fff0bc,#f5c477 65%,#c57c43);box-shadow:inset -10px -10px 14px #99532533,0 12px 22px #bb8d5e55}.whole{left:20px;top:19px;width:220px;height:145px;border-radius:63% 54% 58% 52% / 80% 78% 44% 42%;transform:rotate(-7deg)}.whole:after{content:"";position:absolute;inset:25px 34px;border:13px solid #cd895088;border-left-color:transparent;border-bottom-color:#ab633d66;border-radius:65% 35% 75% 45%;transform:rotate(-14deg)}.half{width:110px;height:145px;top:19px;opacity:0}.left{left:20px;border-radius:65% 0 0 52% / 80% 0 0 45%;clip-path:polygon(0 0,100% 0,80% 30%,100% 49%,80% 70%,100% 100%,0 100%)}.right{left:130px;border-radius:0 58% 52% 0 / 0 80% 42% 0;clip-path:polygon(0 0,100% 0,100% 100%,0 100%,20% 70%,0 49%,20% 30%)}.crack{position:absolute;left:122px;top:34px;width:20px;height:120px;background:#975629;clip-path:polygon(30% 0,85% 15%,40% 32%,100% 50%,25% 67%,80% 82%,25% 100%,0 100%,50% 82%,0 67%,70% 50%,10% 32%,55% 15%,0 0);opacity:0;z-index:5}.cookie.shake{animation:shake .12s infinite}@keyframes shake{0%{transform:translateX(-6px) rotate(-2deg)}50%{transform:translateX(6px) rotate(2deg)}100%{transform:translateX(-6px) rotate(-2deg)}}.cookie.cracking .crack{opacity:1}.cookie.open .whole,.cookie.open .crack{opacity:0}.cookie.open .half{opacity:1;transition:transform .8s ease}.cookie.open .left{transform:translate(-55px,42px) rotate(-30deg)}.cookie.open .right{transform:translate(55px,42px) rotate(30deg)}.stage.result .cookie{transform:translateY(115px)}.paper{position:absolute;left:50%;top:20px;width:min(94%,470px);padding:19px;border-radius:18px;background:#fff;border:2px solid #f4d5e8;box-shadow:0 10px 25px #b68fa944;opacity:0;transform:translate(-50%,50px) scale(.88);pointer-events:none;z-index:4}.paper.show{opacity:1;transform:translate(-50%,0) scale(1);transition:all .6s ease}.rank{color:#ed72ab;font-size:clamp(26px,6vw,42px);font-weight:900;margin:6px}.message{line-height:1.7}.details{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:13px}.details div{background:#f8f4ff;border-radius:12px;padding:10px;font-size:13px}.details b{display:block;margin-top:4px;font-size:15px}.hint{font-weight:700;margin:14px}.history{margin-top:12px;padding:12px;border-radius:15px;background:#ffffffab;line-height:1.6}.note{font-size:12px;color:#a28ba1;margin-top:10px}body.transparent{background:transparent}body.transparent .app{background:transparent;border-color:transparent;box-shadow:none}body.transparent .stage{background:transparent}@media(max-width:480px){.app{padding:14px}.stage{height:330px}.stage.result{height:420px}.stage.result .cookie{transform:translateY(135px)}.paper{top:12px;padding:12px}}
+</style></head><body><main class="app"><h1>♡ Fortune Cookie ♡</h1><p class="sub">🥠 震えて、ヒビが入って、パカッ！ 今日の運勢は？</p>
+<div class="settings"><input id="name" placeholder="参加者名（任意）" maxlength="30" aria-label="参加者名"><input id="title" placeholder="配信タイトル（任意）" maxlength="60" aria-label="配信タイトル"><select id="mode" aria-label="抽選モード"><option value="全部">全部ミックス</option><option>運勢</option><option>格言</option><option>ネタ</option></select><select id="category" aria-label="カテゴリー"><option value="全部">全カテゴリ</option><option>総合</option><option>恋愛</option><option>仕事</option><option>配信</option><option>金運</option><option>健康</option></select></div>
+<section class="stage" id="stage"><div class="cookie" id="cookie" role="button" tabindex="0" aria-label="クッキーを割る"><div class="whole"></div><div class="crack"></div><div class="half left"></div><div class="half right"></div></div><article class="paper" id="paper" aria-live="polite"><div style="font-size:12px;letter-spacing:.2em;color:#c495b0">✦ YOUR FORTUNE ✦</div><div class="rank" id="rank"></div><div class="message" id="message"></div><div class="details"><div>🎨 ラッキーカラー<b id="color"></b></div><div>🎀 ラッキーアイテム<b id="item"></b></div></div></article></section>
+<div class="hint" id="hint">クッキーをタップしてね！</div><div class="actions"><button id="draw">クッキーを割る ♡</button><button class="secondary" id="reset">もう一回</button><button class="secondary" id="sound">🔊 音 ON</button><button class="secondary" id="background">🎬 OBS背景透過</button></div><div class="history" id="history">抽選履歴：まだありません</div><div class="note">結果と視聴者コメントは演出用です。ブラウザ上で動作し、外部通信は行いません。</div></main>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id);
+const fortunes=[
+['運勢','総合','大吉','迷っていたことに追い風が吹く日！一歩踏み出してみよう。','ミルキーピンク','リボン'],
+['運勢','総合','中吉','ちいさな親切が幸運を連れてくるよ。','ラベンダー','マグカップ'],
+['運勢','総合','小吉','マイペースで十分。今日は穏やかな幸せを探そう。','ミント','ハンカチ'],
+['運勢','総合','末吉','準備を丁寧にすると明日のチャンスにつながりそう。','クリーム','ノート'],
+['運勢','恋愛','恋愛大吉','自然な笑顔が魅力を引き出す日。','桜色','花のチャーム'],
+['運勢','恋愛','恋愛吉','相手のお話をじっくり聞いてみよう。','ローズ','手紙'],
+['運勢','仕事','仕事大吉','計画を立てると次の一手が見えてくる！','スカイブルー','手帳'],
+['運勢','仕事','仕事吉','日頃の積み重ねが強みになる日。','パールホワイト','ペン'],
+['運勢','配信','配信大吉','今日の枠に素敵な出会いが待っているかも！','ソーダブルー','マイク'],
+['運勢','配信','配信中吉','自然体のおしゃべりが一番の魅力。','ベビーピンク','イヤホン'],
+['運勢','金運','金運吉','小さな節約が未来の自分を助ける日。','ゴールド','財布'],
+['運勢','健康','健康吉','休息と水分補給で調子を整えよう。','ミントグリーン','タンブラー'],
+['格言','総合','希望吉','完璧を待つより、今日の一歩。','ラベンダー','メモ'],
+['格言','総合','勇気吉','失敗を恐れるより、試した経験を大切に。','レモン','星のチャーム'],
+['格言','仕事','成長吉','昨日の自分より少し進めば、それは成長。','クリーム','付箋'],
+['格言','配信','継続吉','また来たいと思える場所は、毎日の優しさから生まれる。','ミルクティー','配信メモ'],
+['格言','恋愛','素直吉','大切な気持ちは短い言葉でも伝わる。','ピーチ','小さな花'],
+['格言','健康','整え吉','頑張る時間と休む時間、どちらも大事。','ミント','枕'],
+['ネタ','総合','プリン吉','冷蔵庫を開けるたび運気上昇。ただしプリンは増えません。','カスタード','プリン'],
+['ネタ','総合','ポンコツ吉','忘れ物に注意！何を忘れるかは忘れました。','わたあめ色','付箋'],
+['ネタ','総合','寝落ち吉','お布団からの愛情表現が強すぎる日です。','ネイビー','毛布'],
+['ネタ','恋愛','照れ吉','目が合えば3ポイント。話せれば5ポイント。妄想は無制限。','いちご色','キャンディ'],
+['ネタ','仕事','しごでき吉','やる気は満タン。体力は省エネモード。','ベージュ','コーヒー'],
+['ネタ','配信','配信神','コメントが増える魔法の言葉は「みんな元気？」！','キャンディピンク','ヘッドホン'],
+['ネタ','配信','爆笑吉','今日のあなたは主役級。ただしBGMは自分で流してね。','パープル','スピーカー'],
+['ネタ','金運','節約神','買わずに帰るだけで財布の中の平和が守られます。','レモン色','貯金箱'],
+['ネタ','健康','睡眠吉','最強の回復アイテムは布団。使用すると時間が飛びます。','ナイトブルー','枕']
+];
+let bag=[],last=-1,filterKey='',busy=false,opened=false,audioOn=true,history=[];
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function select(){const m=$('mode').value,c=$('category').value;const key=m+'|'+c;if(key!==filterKey){bag=[];filterKey=key}if(!bag.length){bag=shuffle(fortunes.map((f,i)=>i).filter(i=>(m==='全部'||fortunes[i][0]===m)&&(c==='全部'||fortunes[i][1]===c)));if(bag.length>1&&bag[bag.length-1]===last){const i=bag.findIndex(v=>v!==last);[bag[i],bag[bag.length-1]]=[bag[bag.length-1],bag[i]]}}if(!bag.length)return null;last=bag.pop();return fortunes[last]}
+function tone(freq,dur=.13){if(!audioOn)return;try{const AC=window.AudioContext||window.webkitAudioContext;const ctx=window.cookieAudio||(window.cookieAudio=new AC());if(ctx.state==='suspended')ctx.resume();const o=ctx.createOscillator(),g=ctx.createGain();o.type='triangle';o.frequency.value=freq;g.gain.setValueAtTime(.04,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+dur);o.connect(g);g.connect(ctx.destination);o.start();o.stop(ctx.currentTime+dur)}catch(e){}}
+function reset(){if(busy)return;opened=false;$('cookie').className='cookie';$('stage').classList.remove('result');$('paper').classList.remove('show');$('hint').textContent='クッキーをタップしてね！'}
+function draw(){if(busy||opened)return;const f=select();if(!f){$('hint').textContent='この組み合わせにはおみくじがありません。条件を変更してね。';return}busy=true;$('draw').disabled=true;$('cookie').classList.add('shake');$('hint').textContent='か、固い…！ ブルブル…';tone(210);
+setTimeout(()=>{tone(280);$('hint').textContent='もう少し…！'},650);
+setTimeout(()=>{$('cookie').classList.remove('shake');$('cookie').classList.add('cracking');$('hint').textContent='ピキッ！ ヒビが入った！';tone(370)},1400);
+setTimeout(()=>{$('cookie').classList.remove('cracking');$('cookie').classList.add('open');$('hint').textContent='パカッ！';tone(550)},1800);
+setTimeout(()=>{$('rank').textContent=f[2];$('message').textContent=($('name').value.trim()?$('name').value.trim()+'さんへ：':'')+f[3];$('color').textContent=f[4];$('item').textContent=f[5];$('stage').classList.add('result');$('paper').classList.add('show');$('hint').textContent='✨ 今日のおみくじが出たよ！';tone(880,.24);history.unshift((new Date()).toLocaleTimeString('ja-JP',{hour:'2-digit',minute:'2-digit'})+' '+f[2]);$('history').textContent='抽選履歴：'+history.slice(0,12).join(' ・ ');opened=true;busy=false;$('draw').disabled=false},2300)}
+$('draw').addEventListener('click',()=>{if(opened){reset();requestAnimationFrame(draw)}else draw()});
+$('reset').addEventListener('click',reset);
+$('cookie').addEventListener('click',draw);
+$('cookie').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();draw()}});
+$('sound').addEventListener('click',()=>{audioOn=!audioOn;$('sound').textContent=audioOn?'🔊 音 ON':'🔇 音 OFF'});
+$('background').addEventListener('click',()=>{document.body.classList.toggle('transparent');$('background').textContent=document.body.classList.contains('transparent')?'🎬 通常背景へ':'🎬 OBS背景透過'});
+for(const id of ['mode','category'])$(id).addEventListener('change',()=>{bag=[];filterKey='';reset()});
+})();
+</script></body></html>
