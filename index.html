@@ -76,9 +76,9 @@ body:not(.transparent){background:radial-gradient(circle at 10% 10%,var(--theme-
 .cookie.open .cookie-svg-left,.cookie.open .cookie-svg-right{opacity:1}
 .cookie.open .cookie-svg-left{transform:translate(-45px,24px) rotate(-17deg)}
 .cookie.open .cookie-svg-right{transform:translate(45px,24px) rotate(17deg)}
-/* Image asset override: upload fortune-cookie.webp alongside index.html */
+/* Image asset override: upload fortune-cookie.png alongside index.html */
 .cookie.has-cookie-image .cookie-art{display:none}
-.photo-whole,.photo-half,.photo-crack{display:none;position:absolute;inset:0;background-image:url("./fortune-cookie.webp");background-position:center;background-repeat:no-repeat;background-size:contain;pointer-events:none}
+.photo-whole,.photo-half,.photo-crack{display:none;position:absolute;inset:0;background-image:url("./fortune-cookie.png");background-position:center;background-repeat:no-repeat;background-size:contain;pointer-events:none}
 .cookie.has-cookie-image .photo-whole,.cookie.has-cookie-image .photo-half,.cookie.has-cookie-image .photo-crack{display:block}
 .cookie.has-cookie-image .photo-whole{z-index:2}
 .cookie.has-cookie-image .photo-half{z-index:2;opacity:0;transition:transform .85s cubic-bezier(.2,.85,.2,1)}
@@ -127,7 +127,7 @@ body:not(.transparent){background:radial-gradient(circle at 10% 10%,var(--theme-
 <script>
 (()=>{'use strict';
 const $=id=>document.getElementById(id);
-const cookieImage=new Image();cookieImage.onload=()=>{$('cookie').classList.add('has-cookie-image')};cookieImage.onerror=()=>{};cookieImage.src='./fortune-cookie.webp';
+const cookieImage=new Image();cookieImage.onload=()=>{$('cookie').classList.add('has-cookie-image')};cookieImage.onerror=()=>{};cookieImage.src='./fortune-cookie.png';
 const defaultFortunes=[
 ['運勢','総合','大吉','迷っていたことに追い風が吹く日！一歩踏み出してみよう。','ミルキーピンク','リボン'],
 ['運勢','総合','中吉','ちいさな親切が幸運を連れてくるよ。','ラベンダー','マグカップ'],
