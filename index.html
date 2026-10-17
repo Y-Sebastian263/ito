@@ -76,9 +76,23 @@ body:not(.transparent){background:radial-gradient(circle at 10% 10%,var(--theme-
 .cookie.open .cookie-svg-left,.cookie.open .cookie-svg-right{opacity:1}
 .cookie.open .cookie-svg-left{transform:translate(-45px,24px) rotate(-17deg)}
 .cookie.open .cookie-svg-right{transform:translate(45px,24px) rotate(17deg)}
+/* Image asset override: upload fortune-cookie.webp alongside index.html */
+.cookie.has-cookie-image .cookie-art{display:none}
+.photo-whole,.photo-half,.photo-crack{display:none;position:absolute;inset:0;background-image:url("./fortune-cookie.webp");background-position:center;background-repeat:no-repeat;background-size:contain;pointer-events:none}
+.cookie.has-cookie-image .photo-whole,.cookie.has-cookie-image .photo-half,.cookie.has-cookie-image .photo-crack{display:block}
+.cookie.has-cookie-image .photo-whole{z-index:2}
+.cookie.has-cookie-image .photo-half{z-index:2;opacity:0;transition:transform .85s cubic-bezier(.2,.85,.2,1)}
+.cookie.has-cookie-image .photo-left{clip-path:polygon(0 0,52% 0,49% 30%,53% 55%,49% 80%,49% 100%,0 100%)}
+.cookie.has-cookie-image .photo-right{clip-path:polygon(52% 0,100% 0,100% 100%,49% 100%,49% 80%,53% 55%,49% 30%)}
+.cookie.has-cookie-image .photo-crack{z-index:3;opacity:0;background:none;inset:13% 48% 12% 49%;width:4%;height:72%;clip-path:polygon(35% 0,90% 19%,20% 35%,90% 56%,20% 76%,80% 100%,0 100%,50% 76%,0 56%,60% 35%,0 19%);background:#995b33}
+.cookie.has-cookie-image.cracking .photo-crack{opacity:1}
+.cookie.has-cookie-image.open .photo-whole,.cookie.has-cookie-image.open .photo-crack{opacity:0}
+.cookie.has-cookie-image.open .photo-half{opacity:1}
+.cookie.has-cookie-image.open .photo-left{transform:translate(-46px,21px) rotate(-18deg)}
+.cookie.has-cookie-image.open .photo-right{transform:translate(46px,21px) rotate(18deg)}
 </style></head><body><main class="app"><h1>♡ Fortune Cookie ♡</h1><p class="sub">🥠 震えて、ヒビが入って、パカッ！ 今日の運勢は？</p>
 <div class="settings"><select id="content-mode" aria-label="おみくじ・ヒントモード"><option value="omikuji">🥠 おみくじモード</option><option value="hint">💡 ヒントモード</option></select><input id="name" placeholder="参加者名（任意）" maxlength="30" aria-label="参加者名"><input id="title" placeholder="配信タイトル（任意）" maxlength="60" aria-label="配信タイトル"><select id="mode" aria-label="抽選モード"><option value="全部">全部ミックス</option><option>運勢</option><option>格言</option><option>ネタ</option></select><select id="category" aria-label="カテゴリー"><option value="全部">全カテゴリ</option><option>総合</option><option>恋愛</option><option>仕事</option><option>配信</option><option>金運</option><option>健康</option></select></div>
-<section class="stage" id="stage"><div class="cookie" id="cookie" role="button" tabindex="0" aria-label="クッキーを割る"><svg class="cookie-art" viewBox="0 0 260 185" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
+<section class="stage" id="stage"><div class="cookie" id="cookie" role="button" tabindex="0" aria-label="クッキーを割る"><div class="photo-whole"></div><div class="photo-half photo-left"></div><div class="photo-half photo-right"></div><div class="photo-crack"></div><svg class="cookie-art" viewBox="0 0 260 185" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
 <linearGradient id="fortuneLeft" x1=".15" y1=".1" x2=".95" y2="1"><stop stop-color="#FFFDF0"/><stop offset=".36" stop-color="#FFF1D1"/><stop offset=".73" stop-color="#F6D4A3"/><stop offset="1" stop-color="#D99555"/></linearGradient>
 <linearGradient id="fortuneRight" x1=".05" y1=".2" x2=".95" y2="1"><stop stop-color="#FFFCEF"/><stop offset=".43" stop-color="#FAEAD0"/><stop offset=".82" stop-color="#EFC898"/><stop offset="1" stop-color="#C98547"/></linearGradient>
 <linearGradient id="fortuneEdge" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#FBDEAD"/><stop offset=".7" stop-color="#D79A5E"/><stop offset="1" stop-color="#B9743B"/></linearGradient>
@@ -113,6 +127,7 @@ body:not(.transparent){background:radial-gradient(circle at 10% 10%,var(--theme-
 <script>
 (()=>{'use strict';
 const $=id=>document.getElementById(id);
+const cookieImage=new Image();cookieImage.onload=()=>{$('cookie').classList.add('has-cookie-image')};cookieImage.onerror=()=>{};cookieImage.src='./fortune-cookie.webp';
 const defaultFortunes=[
 ['運勢','総合','大吉','迷っていたことに追い風が吹く日！一歩踏み出してみよう。','ミルキーピンク','リボン'],
 ['運勢','総合','中吉','ちいさな親切が幸運を連れてくるよ。','ラベンダー','マグカップ'],
