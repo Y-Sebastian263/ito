@@ -79,28 +79,35 @@ body:not(.transparent){background:radial-gradient(circle at 10% 10%,var(--theme-
 </style></head><body><main class="app"><h1>♡ Fortune Cookie ♡</h1><p class="sub">🥠 震えて、ヒビが入って、パカッ！ 今日の運勢は？</p>
 <div class="settings"><select id="content-mode" aria-label="おみくじ・ヒントモード"><option value="omikuji">🥠 おみくじモード</option><option value="hint">💡 ヒントモード</option></select><input id="name" placeholder="参加者名（任意）" maxlength="30" aria-label="参加者名"><input id="title" placeholder="配信タイトル（任意）" maxlength="60" aria-label="配信タイトル"><select id="mode" aria-label="抽選モード"><option value="全部">全部ミックス</option><option>運勢</option><option>格言</option><option>ネタ</option></select><select id="category" aria-label="カテゴリー"><option value="全部">全カテゴリ</option><option>総合</option><option>恋愛</option><option>仕事</option><option>配信</option><option>金運</option><option>健康</option></select></div>
 <section class="stage" id="stage"><div class="cookie" id="cookie" role="button" tabindex="0" aria-label="クッキーを割る"><svg class="cookie-art" viewBox="0 0 260 185" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
-<linearGradient id="biscuitL" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FFF1C7"/><stop offset=".36" stop-color="#FFD994"/><stop offset=".78" stop-color="#EEAC64"/><stop offset="1" stop-color="#B76E3B"/></linearGradient>
-<linearGradient id="biscuitR" x1=".3" y1="0" x2=".8" y2="1"><stop stop-color="#FFF0B8"/><stop offset=".42" stop-color="#FFD596"/><stop offset="1" stop-color="#C47B45"/></linearGradient>
-<linearGradient id="rim" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#FFF2C3"/><stop offset=".5" stop-color="#C78443"/><stop offset="1" stop-color="#9D5B35"/></linearGradient>
-<radialGradient id="fold" cx=".55" cy=".5" r=".65"><stop stop-color="#97542F"/><stop offset=".55" stop-color="#BF7B41"/><stop offset="1" stop-color="#F1C17C"/></radialGradient>
-<filter id="cookieShadow" x="-40%" y="-40%" width="180%" height="200%"><feGaussianBlur stdDeviation="4"/></filter>
-<clipPath id="splitL"><path d="M0 0 H142 L130 45 L145 75 L129 105 L140 140 L128 185 H0Z"/></clipPath><clipPath id="splitR"><path d="M142 0 H260 V185 H128 L140 140 L129 105 L145 75 L130 45Z"/></clipPath>
-<g id="cookieDrawing">
-<ellipse cx="132" cy="156" rx="107" ry="12" fill="#956039" opacity=".24" filter="url(#cookieShadow)"/>
-<path d="M27 111 Q13 84 44 61 Q63 39 102 26 Q124 20 143 30 Q175 18 203 46 Q243 76 230 118 Q214 145 180 146 Q150 148 126 132 Q103 162 61 148 Q34 141 27 111Z" fill="url(#rim)" stroke="#B77540" stroke-width="2"/>
-<path d="M30 105 Q15 78 55 55 Q90 31 120 30 Q137 30 137 56 Q134 87 127 114 Q118 143 75 143 Q35 138 30 105Z" fill="url(#biscuitL)" stroke="#E4A05E" stroke-width="2"/>
-<path d="M142 33 Q183 26 211 57 Q233 84 226 111 Q211 140 185 140 Q156 142 127 116 Q134 88 139 56Z" fill="url(#biscuitR)" stroke="#E09B5C" stroke-width="2"/>
-<path d="M130 34 Q147 48 152 77 Q160 101 128 130 Q110 110 114 89 Q114 60 130 34Z" fill="url(#fold)" opacity=".96"/>
-<path d="M128 36 Q120 62 123 86 Q120 110 128 125" fill="none" stroke="#FFF0C4" stroke-width="5" stroke-linecap="round" opacity=".7"/>
-<path d="M40 107 Q42 139 76 136 Q103 140 117 117" fill="none" stroke="#9E5A32" stroke-width="5" opacity=".45"/>
-<path d="M161 135 Q194 151 219 121" fill="none" stroke="#A66337" stroke-width="5" opacity=".45"/>
-<g fill="#B77C4D" opacity=".38"><circle cx="70" cy="75" r="2.2"/><circle cx="92" cy="51" r="1.7"/><circle cx="57" cy="98" r="1.5"/><circle cx="82" cy="112" r="2"/><circle cx="106" cy="90" r="1.4"/><circle cx="179" cy="67" r="2"/><circle cx="198" cy="92" r="1.8"/><circle cx="175" cy="116" r="1.3"/><circle cx="213" cy="110" r="1.6"/><circle cx="98" cy="127" r="1.2"/><circle cx="65" cy="119" r="1.2"/><circle cx="189" cy="103" r="1.2"/></g>
-<g fill="none" stroke="#FFF5D2" stroke-linecap="round" opacity=".55"><path d="M49 75 Q76 48 108 42" stroke-width="5"/><path d="M169 46 Q202 57 213 82" stroke-width="4"/></g>
+<linearGradient id="fortuneLeft" x1=".15" y1=".1" x2=".95" y2="1"><stop stop-color="#FFFDF0"/><stop offset=".36" stop-color="#FFF1D1"/><stop offset=".73" stop-color="#F6D4A3"/><stop offset="1" stop-color="#D99555"/></linearGradient>
+<linearGradient id="fortuneRight" x1=".05" y1=".2" x2=".95" y2="1"><stop stop-color="#FFFCEF"/><stop offset=".43" stop-color="#FAEAD0"/><stop offset=".82" stop-color="#EFC898"/><stop offset="1" stop-color="#C98547"/></linearGradient>
+<linearGradient id="fortuneEdge" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#FBDEAD"/><stop offset=".7" stop-color="#D79A5E"/><stop offset="1" stop-color="#B9743B"/></linearGradient>
+<radialGradient id="fortuneCrease" cx=".4" cy=".45" r=".7"><stop stop-color="#AC7543"/><stop offset=".5" stop-color="#C5915C"/><stop offset="1" stop-color="#F8DDAF"/></radialGradient>
+<filter id="fortuneSoftShadow" x="-30%" y="-40%" width="160%" height="190%"><feGaussianBlur stdDeviation="5"/></filter>
+<clipPath id="fortuneSplitLeft"><path d="M0 0H139L127 42L141 81L125 116L137 145L124 185H0Z"/></clipPath>
+<clipPath id="fortuneSplitRight"><path d="M139 0H260V185H124L137 145L125 116L141 81L127 42Z"/></clipPath>
+<g id="fortuneDrawing">
+<ellipse cx="133" cy="167" rx="101" ry="9" fill="#9B6D46" opacity=".2" filter="url(#fortuneSoftShadow)"/>
+<!-- The softly toasted outer fold and connected arch -->
+<path d="M43 131Q20 90 49 45Q72 13 111 14Q131 13 143 29Q176 9 204 36Q240 70 231 124Q226 157 211 163Q195 169 172 151L132 111Q119 144 93 171Q79 182 65 171Q51 158 43 131Z" fill="url(#fortuneEdge)" stroke="#BC854F" stroke-width="2.5" stroke-linejoin="round"/>
+<!-- Left descending folded wing, recognizable from the photo -->
+<path d="M52 127Q28 85 59 46Q84 18 112 22Q128 24 132 43Q130 78 116 120Q105 150 87 171Q75 176 64 161Q55 146 52 127Z" fill="url(#fortuneLeft)" stroke="#EAC396" stroke-width="1.6"/>
+<!-- Deep V shaped recessed fold between the wings -->
+<path d="M133 39Q143 57 149 80Q161 112 192 144Q166 139 141 120Q122 100 123 79Q124 55 133 39Z" fill="url(#fortuneCrease)"/>
+<!-- Right descending folded wing -->
+<path d="M142 27Q181 18 205 46Q234 83 223 123Q218 150 210 159Q201 162 180 142Q147 117 135 76Q127 48 142 27Z" fill="url(#fortuneRight)" stroke="#E7BD8C" stroke-width="1.7"/>
+<!-- Delicate crease highlight -->
+<path d="M130 40Q121 73 125 96Q131 114 144 123" fill="none" stroke="#FFF8E4" stroke-width="6" opacity=".8" stroke-linecap="round"/>
+<path d="M148 38Q164 29 184 39" fill="none" stroke="#FFFDF3" stroke-width="4" opacity=".7" stroke-linecap="round"/>
+<path d="M55 130Q59 154 76 167" fill="none" stroke="#C68B54" stroke-width="4" opacity=".36"/>
+<path d="M201 149Q217 137 222 119" fill="none" stroke="#B87D48" stroke-width="4" opacity=".35"/>
+<!-- Tiny oven-baked flecks, subtle to preserve kawaii illustration -->
+<g fill="#C58B5C" opacity=".19"><circle cx="81" cy="57" r="1.3"/><circle cx="72" cy="96" r="1.6"/><circle cx="93" cy="120" r="1.3"/><circle cx="103" cy="43" r="1.1"/><circle cx="85" cy="148" r="1.2"/><circle cx="168" cy="50" r="1.4"/><circle cx="192" cy="70" r="1.3"/><circle cx="188" cy="112" r="1.7"/><circle cx="204" cy="130" r="1.2"/></g>
 </g></defs>
-<g class="cookie-svg-whole"><use href="#cookieDrawing"/></g>
-<g class="cookie-svg-left" clip-path="url(#splitL)"><use href="#cookieDrawing"/></g>
-<g class="cookie-svg-right" clip-path="url(#splitR)"><use href="#cookieDrawing"/></g>
-<path class="cookie-svg-crack" d="M136 31 L130 45 L145 75 L129 105 L140 140 L132 153" fill="none" stroke="#8F542F" stroke-width="3" stroke-linejoin="round"/>
+<g class="cookie-svg-whole"><use href="#fortuneDrawing"/></g>
+<g class="cookie-svg-left" clip-path="url(#fortuneSplitLeft)"><use href="#fortuneDrawing"/></g>
+<g class="cookie-svg-right" clip-path="url(#fortuneSplitRight)"><use href="#fortuneDrawing"/></g>
+<path class="cookie-svg-crack" d="M134 28L127 42L141 81L125 116L137 145L124 168" fill="none" stroke="#976037" stroke-width="2.8" stroke-linejoin="round"/>
 </svg></div><article class="paper" id="paper" aria-live="polite"><div style="font-size:12px;letter-spacing:.2em;color:#c495b0">✦ YOUR FORTUNE ✦</div><div class="rank" id="rank"></div><div class="message" id="message"></div><div class="details" id="result-details"><div>🎨 ラッキーカラー<b id="color"></b></div><div>🎀 ラッキーアイテム<b id="item"></b></div></div></article></section>
 <div class="hint" id="hint">クッキーをタップしてね！</div><div class="actions"><button id="draw">クッキーを割る ♡</button><button class="secondary" id="reset">もう一回</button><button class="secondary" id="sound">🔊 音 ON</button><button class="secondary" id="background">🎬 OBS背景透過</button><button id="open-editor" class="edit-trigger" type="button">✏️ おみくじを編集・管理</button></div><div class="history" id="history">抽選履歴：まだありません</div><div class="note">結果と視聴者コメントは演出用です。ブラウザ上で動作し、外部通信は行いません。</div><div class="edit-modal" id="edit-modal" hidden><section class="edit-dialog" role="dialog" aria-modal="true" aria-labelledby="edit-heading"><div class="edit-dialog-head"><h2 id="edit-heading">✏️ おみくじ編集・管理</h2><button type="button" id="close-editor" class="secondary" aria-label="編集画面を閉じる">✕ 閉じる</button></div><div class="editor" id="editor"><div class="mode-tabs"><button id="tab-omikuji" type="button" class="mode-tab selected" aria-pressed="true">🥠 おみくじモード</button><button id="tab-hint" type="button" class="mode-tab" aria-pressed="false">💡 ヒントモード</button></div><small>一覧から選んで編集するか、新規追加できます。内容はこのブラウザ内に自動保存されます。</small><section class="theme-section" aria-label="カラーパレット"><strong>🎨 カラーパレット（パステル20色）</strong><small>色を選ぶとアプリの配色が切り替わり、自動保存されます。</small><div id="theme-palette" class="theme-palette" role="group" aria-label="テーマカラー"></div><div id="theme-status" class="editor-status" aria-live="polite"></div></section><div class="editor-grid"><label id="edit-type-wrap">種類<select id="edit-type"><option>運勢</option><option>格言</option><option>ネタ</option></select></label><label>カテゴリ<select id="edit-category"><option>総合</option><option>恋愛</option><option>仕事</option><option>配信</option><option>金運</option><option>健康</option></select></label><label class="wide">見出し<input id="edit-rank" maxlength="80" placeholder="例：大吉"></label><label class="wide">本文<textarea id="edit-message" maxlength="1500" placeholder="結果として表示する文章"></textarea></label><label id="edit-color-wrap">ラッキーカラー<input id="edit-color" maxlength="100"></label><label id="edit-item-wrap">ラッキーアイテム<input id="edit-item" maxlength="100"></label></div><div class="editor-actions"><button id="edit-save" type="button">💾 保存</button><button id="edit-add" class="secondary" type="button">＋ 新規作成</button><button id="edit-delete" class="secondary" type="button">削除</button><button id="edit-export" class="secondary" type="button">JSON書き出し</button><button id="edit-import" class="secondary" type="button">JSON読み込み</button><button id="edit-defaults" class="secondary" type="button">初期データに戻す</button><input id="edit-file" type="file" accept=".json,application/json" hidden></div><p class="editor-status" id="edit-status" role="status"></p><div class="fortune-list-header"><strong>📜 登録済みの文章一覧（<span id="edit-count">0</span>件）</strong><input id="edit-search" type="search" placeholder="文章・運勢名で検索" aria-label="おみくじを検索"></div><div id="edit-items" class="fortune-edit-list"></div><small>※保存先はこの端末・ブラウザのローカルストレージです。別端末やGitHub上の初期データには自動反映されません。共有する場合はJSONを書き出して、別端末で読み込んでください。</small></div></section></div></main>
 <script>
