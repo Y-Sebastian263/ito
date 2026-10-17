@@ -122,6 +122,33 @@ body:not(.transparent){background:radial-gradient(circle at 10% 10%,var(--theme-
 #result-extras[hidden]{display:none!important}
 @media(max-height:760px){.result-dialog{padding:24px 32px}.result-rank{font-size:clamp(45px,8vh,76px)!important;margin:3px 0 10px}.result-message{font-size:clamp(23px,4vh,38px);margin:8px 0 14px}.result-extras>div{padding:9px}.result-again{margin-top:12px}}
 @media(max-width:600px){.result-modal{padding:8px}.result-dialog{width:100%;padding:52px 16px 24px}.result-message{font-size:clamp(22px,5vw,30px)}.result-extras{grid-template-columns:1fr;gap:6px}}
+
+/* Extra-large text for livestream legibility */
+.result-dialog{width:min(1540px,97vw);max-height:96dvh;padding:clamp(20px,3vh,50px) clamp(20px,4vw,68px)}
+.result-rank{font-size:clamp(75px,10vw,170px)!important;line-height:1.05}
+.result-message{font-size:clamp(31px,4vw,66px);line-height:1.45;max-width:1350px;font-weight:850}
+.result-kind{font-size:clamp(25px,2.7vw,45px)}
+.result-stars{font-size:clamp(18px,1.8vw,30px)}
+.result-extras{font-size:clamp(24px,2.2vw,37px)}
+.result-extras strong{font-size:clamp(28px,3vw,50px)}
+.result-again{font-size:clamp(19px,1.7vw,27px)!important}
+@media(min-width:800px) and (min-aspect-ratio:4/3){
+.app h1{font-size:clamp(34px,5.2vh,63px)}
+.app .sub{font-size:clamp(18px,2.6vh,29px)}
+.app>.actions button,.app>.settings input,.app>.settings select{font-size:clamp(16px,2.45vh,26px)}
+.app .hint{font-size:clamp(21px,3vh,35px)}
+}
+@media(max-height:850px){
+.result-dialog{padding:18px 30px;max-height:96dvh}
+.result-rank{font-size:clamp(64px,12vh,115px)!important;margin:5px 0 10px}
+.result-message{font-size:clamp(27px,6vh,53px);line-height:1.3;margin:8px auto 13px}
+.result-kind{font-size:clamp(23px,4vh,36px);margin:4px}
+.result-extras{font-size:clamp(20px,3vh,30px)}
+.result-extras strong{font-size:clamp(23px,3.5vh,37px);margin-top:2px}
+.result-extras>div{padding:9px}
+.result-again{margin-top:10px}
+}
+@media(max-width:600px){.result-dialog{padding:50px 15px 20px}.result-rank{font-size:clamp(55px,12vw,95px)!important}.result-message{font-size:clamp(25px,6vw,38px)}.result-extras{font-size:19px}.result-extras strong{font-size:24px}}
 </style></head><body><main class="app"><h1>♡ Fortune Cookie ♡</h1><p class="sub">🥠 震えて、ヒビが入って、パカッ！ 今日の運勢は？</p>
 <div class="settings"><select id="content-mode" aria-label="おみくじ・ヒントモード"><option value="omikuji">🥠 おみくじモード</option><option value="hint">💡 ヒントモード</option></select><input id="name" placeholder="参加者名（任意）" maxlength="30" aria-label="参加者名"><input id="title" placeholder="配信タイトル（任意）" maxlength="60" aria-label="配信タイトル"><select id="mode" aria-label="抽選モード"><option value="全部">全部ミックス</option><option>運勢</option><option>格言</option><option>ネタ</option></select><select id="category" aria-label="カテゴリー"><option value="全部">全カテゴリ</option><option>総合</option><option>恋愛</option><option>仕事</option><option>配信</option><option>金運</option><option>健康</option></select></div>
 <section class="stage" id="stage"><div class="cookie" id="cookie" role="button" tabindex="0" aria-label="クッキーを割る"><div class="photo-whole"></div><div class="photo-half photo-left"></div><div class="photo-half photo-right"></div><div class="photo-crack"></div><svg class="cookie-art" viewBox="0 0 260 185" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
